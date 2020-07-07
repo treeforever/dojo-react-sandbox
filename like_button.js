@@ -21,20 +21,16 @@ var LikeButton = function (_React$Component) {
     }
 
     _createClass(LikeButton, [{
-        key: 'render',
+        key: "render",
         value: function render() {
             var _this2 = this;
 
-            if (this.state.liked) {
-                return 'You liked this.';
-            }
-
             return React.createElement(
-                'button',
+                "button",
                 { onClick: function onClick() {
-                        return _this2.setState({ liked: true });
+                        return _this2.setState({ liked: !_this2.state.liked });
                     } },
-                'Like'
+                this.state.liked ? "Liked" : "Like"
             );
         }
     }]);
