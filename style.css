@@ -1,0 +1,41 @@
+html,
+body {
+  height: 99%;
+  width: 99%;
+  margin: 0;
+  padding: 0;
+}
+      
+body {
+  background-color: #ffebcd;
+  overflow: hidden;
+  color : #778899;
+  font-family: "Trebuchet MS", "Tahoma", sans-serif;
+  padding : 10px;
+}
+
+p {
+  font-size : larger;
+}
+#lessontabs {
+  width : 97%;
+  height : 98%;
+}
+
+.tabpane {
+}
+
+.panezone {
+  float: left; 
+  width: 46%; 
+  height: 87%;
+  padding : 10px;
+  border-left : 2px solid #778899;  
+  margin : 5px;
+}
+
+h2{
+  padding-bottom : 5px;
+  border-bottom : 2px solid #778899;
+}
+
