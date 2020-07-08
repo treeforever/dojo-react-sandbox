@@ -27,83 +27,11 @@
 
             <div class="panezone">
                 <div id="like_button_container"></div>
-
+                <div id="grid"></div>
                 <h3>Lessons</h3>
-                <ol>
-                    <li>Introduction to the ArcGIS API for JavaScript</li>
-                    <li>Load a map into a web app</li>
-                    <li>Working with GIS layers</li>
-                    <li>Displaying maps...
-                        <ol style="list-style-type:upper-alpha;">
-                            <li>...with MapViews</li>
-                            <li>...with SceneViews</li>
-                        </ol>
-                    </li>
-                    <li>Implementing map widgets</li>
-                    <li>Map visualization with renderers and symbols</li>
-                    <li>Searches and queries
-                        <ol style="list-style-type:upper-alpha;">
-                            <li>Performing searches in the map</li>
-                            <li>Performing queries in the map</li>
-                        </ol>
-                    </li>
-                    <li>Performing GIS analysis</li>
-                    <li>Performing geometry operations</li>
-                    <li>Challenge: Apply a pop-up</li>
-                </ol>
-                <h3>Resources</h3>
-                <ul>
-                    <li><a href="https://developers.arcgis.com/" target="_blank">ArcGIS for Developers</a></li>
-                    <li><a href="https://developers.arcgis.com/web-api/" target="_blank">ArcGIS Web APIs</a></li>
-                    <li><a href="https://developers.arcgis.com/javascript/" target="_blank">ArcGIS API for
-                            JavaScript</a>
-                        <ul>
-                            <li><a href="https://developers.arcgis.com/javascript/latest/guide/index.html"
-                                    target="_blank">Guide</a></li>
-                            <li><a href="https://developers.arcgis.com/javascript/latest/api-reference/index.html"
-                                    target="_blank">API reference</a></li>
-                            <li><a href="https://developers.arcgis.com/javascript/latest/sample-code/index.html"
-                                    target="_blank">Sample code</a></li>
-                        </ul>
-                    </li>
-                </ul>
-
             </div>
 
             <div class="panezone">
-                <h3>Activity Instructions</h3>
-                <p>To start an activity, complete the following steps:</p>
-                <ol>
-                    <li>Click the link to the starter Pen</li>
-                    <li>Fork the starter Pen</li>
-                    <li>Change the Pen's name to include lesson, activity stage, and team members</li>
-                    <li>Save the Pen as Private</li>
-                    <li>Add the Pen into the class event collection</li>
-                </ol>
-
-                <h3>Activity Starters</h3>
-                <ul>
-                    <li><a href="https://codepen.io/rpprosser/pen/rJbQdB" target="_blank">Starter &#151; Empty</a></li>
-                    <li><a href="https://codepen.io/rpprosser/pen/ameGZp" target="_blank">Starter &#151; Basic</a></li>
-                    <li><a href="https://codepen.io/rpprosser/pen/zZPYaO" target="_blank">Starter &#151; Basic with
-                            Buttons</a></li>
-                    <li><a href="https://codepen.io/rpprosser/pen/wJPwZg" target="_blank">Starter &#151; Map</a></li>
-                    <li><a href="https://codepen.io/rpprosser/pen/Egrgrq" target="_blank">Starter &#151; Scene</a></li>
-                    <li><a href="https://codepen.io/rpprosser/pen/BLbLXJ" target="_blank">Starter &#151; Change
-                            Basemap</a></li>
-                    <li><a href="https://codepen.io/rpprosser/pen/wowmjp" target="_blank">Starter &#151; Feature Layer -
-                            World</a></li>
-                    <li><a href="https://codepen.io/rpprosser/pen/yawamG" target="_blank">Starter &#151; Feature
-                            Layer</a></li>
-                    <li><a href="https://codepen.io/rpprosser/pen/NRJbpO" target="_blank">Starter &#151; Simple
-                            Markup</a></li>
-                    <li><a href="https://codepen.io/rpprosser/pen/qavqPR" target="_blank">Starter &#151; Portal Item</a>
-                    </li>
-                    <li><a href="https://codepen.io/rpprosser/pen/QKoGQP" target="_blank">Starter &#151; Query</a></li>
-                    <li><a href="https://codepen.io/rpprosser/pen/LRaxLA" target="_blank">Starter &#151; Widget</a></li>
-                    <li><a href="https://codepen.io/rpprosser/pen/jrJyzr" target="_blank">Starter &#151; 3D Symbols</a>
-                    </li>
-                </ul>
 
             </div>
 
@@ -159,102 +87,17 @@
         </div>
         <!-- =============================================== -->
         <!-- ===========  Lesson 2 - Web maps ==============
-    <!-- =============================================== -->
+             =============================================== -->
         <div class="tabpane" id="lesson2" data-dojo-type="dijit/layout/ContentPane" title="Lesson 2">
 
             <h2>Lesson 2 | Load a map into a web app</h2>
 
             <div class="panezone">
                 <h3>Starters:</h3>
-                <ul>
-                    <li><a href="https://codepen.io/rpprosser/pen/ameGZp" target="_blank">Stage 1 Starter &#151;
-                            Basic</a><br>Load a web map from ArcGIS Online or Portal<br>Search ArcGIS Online for <a
-                            href="https://esrieddelivery.maps.arcgis.com/home/search.html?q=type%3Aweb%20map&t=content&focus=maps&restrict=false"
-                            target="_blank">web maps</a></li>
-                    <li><a href="https://codepen.io/rpprosser/pen/ameGZp" target="_blank">Stage 2 Starter &#151;
-                            Basic</a><br>Load a web scene from ArcGIS Online or Portal<br>Search ArcGIS Online for <a
-                            href="https://esrieddelivery.maps.arcgis.com/home/search.html?q=web%20scene&t=content&focus=scenes&restrict=false"
-                            target="_blank">web scenes</a></li>
-                    <li><a href="https://codepen.io/rpprosser/pen/ameGZp" target="_blank">Stage 3 Starter &#151;
-                            Basic</a><br>Modify the <a
-                            href="https://developers.arcgis.com/javascript/latest/sample-code/get-started-mapview/index.html"
-                            target="_blank">Get started with MapView - Create a 2D map</a> sample so it loads a web
-                        scene</li>
-                    <li>Challenges:
-                        <ol>
-                            <li>Using your Stage 1 solution, program the buttons to change the basemap used in the
-                                webmap</li>
-                            <li>Present both a 2D web map and 3D web scene side-by-side</li>
-                        </ol>
-                    </li>
-                </ul>
-
-                <h3>Example Solutions:</h3>
-                <ul>
-                    <li><a href="https://codepen.io/team/iweb/pen/353f2676d633538feca5dbdc69d48141"
-                            target="_blank">Stage 1 - Load a WebMap</a></li>
-                    <li><a href="https://codepen.io/team/iweb/pen/139a1e3c6c0e3e10b5841242c7db674c"
-                            target="_blank">Stage 2 - Load a Web Scene</a></li>
-                    <li><a href="https://codepen.io/team/iweb/pen/39eab3541e176bafa7364bdd49ad58e8"
-                            target="_blank">Stage 3 - Convert a sample to display a web scene</a></li>
-                    <li><a href="https://codepen.io/rpprosser/pen/RpbMKz" target="_blank">Challenge 1</a></li>
-                    <li><a href="https://codepen.io/team/iweb/pen/36cc440c18069557cbd9d39d92c29938"
-                            target="_blank">Challenge 2</a></li>
-                </ul>
-
-                <h3>Additional Solutions:</h3>
-                <ul>
-                    <li><a href="https://codepen.io/rpprosser/pen/WpeMze" target="_blank">Stage 1 &#151; Load a web
-                            map</a></li>
-                    <li><a href="https://codepen.io/rpprosser/pen/MpgVVr" target="_blank">Stage 2 &#151; Load a web
-                            scene</a></li>
-                    <!--
-          <li><a href="" target="_blank">Stage 3 - Animate To</a></li>
-          -->
-                </ul>
-
-
             </div>
 
             <div class="panezone">
                 <h3>Workflow</h3>
-                <ol>
-                    <li>Determine webmap ID (PortalItem ID)</li>
-                    <li>Load required modules</li>
-                    <li>Create instance of WebMap</li>
-                    <li>Set WebMap's portalItem property to PortalItem ID</li>
-                    <li>Create instance of MapView</li>
-                    <li>Set MapView's map property to WebMap </li>
-                </ol>
-                <h3>References</h3>
-                <ul>
-                    <li><a href="https://developers.arcgis.com/javascript/latest/sample-code/webmap-basic/index.html"
-                            target="_blank">Sample: Load a basic web map</a></li>
-                    <li><a href="https://developers.arcgis.com/javascript/latest/sample-code/webmap-basic/index.html"
-                            target="_blank">Class: WebMap</a></li>
-                    <li><a href="https://developers.arcgis.com/javascript/latest/api-reference/esri-views-MapView.html"
-                            target="_blank">Class: MapView</a></li>
-                    <li><a href="https://developers.arcgis.com/javascript/latest/sample-code/webscene-basic/index.html"
-                            target="_blank">Sample: Load a basic WebScene</a></li>
-                    <li><a href="https://developers.arcgis.com/javascript/latest/sample-code/webscene-basic/index.html"
-                            target="_blank">Class: WebScene</a></li>
-                    <li><a href="https://developers.arcgis.com/javascript/latest/api-reference/esri-views-SceneView.html"
-                            target="_blank">Class: SceneView</a></li>
-                    <li><a href="https://developers.arcgis.com/javascript/latest/api-reference/esri-portal-PortalItem.html"
-                            target="_blank">Class: PortalItem</a></li>
-                    <li><a href="https://developers.arcgis.com/javascript/latest/guide/autocasting/index.html"
-                            target="_blank">API Guide: Autocasting</a></li>
-                </ul>
-
-                <h3>Resources</h3>
-                <ul>
-                    <li>AGOL Item details > <a
-                            href="https://esrieddelivery.maps.arcgis.com/home/item.html?id=11f51135ac6b498da13bd4f16e89d4d9"
-                            target="_blank">Mount Rainier web map</a></li>
-                    <li>AGOL Item details > <a
-                            href="https://esrieddelivery.maps.arcgis.com/home/item.html?id=6a5e29ceef2e47c890ce20c1f4f20cf8"
-                            target="_blank">Mount Rainier web scene</a></li>
-                </ul>
             </div>
         </div>
         <!-- =============================================== -->
@@ -267,230 +110,23 @@
 
             <div class="panezone">
                 <h3>Starters:</h3>
-                <ul>
-                    <li><a href="https://codepen.io/rpprosser/pen/wJPwZg" target="_blank">Stage 1 Starter &#151;
-                            Map</a><br>Add a TileLayer or VectorTileLayer to a map</li>
-                    <li><a href="https://codepen.io/rpprosser/pen/wJPwZg" target="_blank">Stage 2 Starter &#151;
-                            Map</a><br>Add a FeatureLayer to a map</li>
-                    <li><a href="https://codepen.io/rpprosser/pen/Egrgrq" target="_blank">Stage 3 Starter &#151;
-                            Scene</a><br>Add a MapImageLayer to a scene</li>
-                </ul>
-
-                <h3>Example Solutions:</h3>
-                <ul>
-                    <li><a href="https://codepen.io/rpprosser/pen/dOmRYx/" target="_blank">Stage 1 - Add Tile Layer to
-                            Map</a></li>
-                    <li><a href="https://codepen.io/rpprosser/pen/BQrZpp" target="_blank">Stage 1 - Add VectorTileLayer
-                            to Map</a></li>
-                    <li><a href="https://codepen.io/rpprosser/pen/wompwm" target="_blank">Stage 2 - Add FeatureLayer to
-                            Map</a></li>
-                    <li><a href="https://codepen.io/rpprosser/pen/qqoppR" target="_blank">Stage 2 - Add FeatureLayer to
-                            Scene</a></li>
-                    <li><a href="https://codepen.io/rpprosser/pen/mOxpzK" target="_blank">Stage 3 - Add MapImageLayer to
-                            Scene</a></li>
-                </ul>
             </div>
 
             <div class="panezone">
                 <h3>Workflow</h3>
-                <ol>
-                    <li>Require layer modules</li>
-                    <li>Construct layer</li>
-                    <li>Add layer to map</li>
-                </ol>
-
-                <h3>References</h3>
-                <ul>
-                    <li><a href="https://developers.arcgis.com/javascript/latest/sample-code/get-started-layers/index.html"
-                            target="_blank">Sample: Get started with layers</a></li>
-                    <li><a href="https://developers.arcgis.com/javascript/latest/api-reference/esri-layers-TileLayer.html"
-                            target="_blank">Class: TileLayer</a>
-                    </li>
-                    <li><a href="https://developers.arcgis.com/javascript/latest/sample-code/get-started-layers/index.html"
-                            target="_blank">Sample: Get started with layers</a><br>Note: Sample uses TileLayer</li>
-
-                    <li><a href="https://developers.arcgis.com/javascript/latest/api-reference/esri-layers-VectorTileLayer.html"
-                            target="_blank">Class: VectorTileLayer</a>
-                        <ul>
-                            <li>Search ArcGIS Online for <a
-                                    href="https://www.arcgis.com/home/search.html?q=type%3A%22Vector%20Tile%20Service%22&t=content"
-                                    target="_blank">VectorTileLayers</a></li>
-                        </ul>
-                    </li>
-                    <li><a href="https://developers.arcgis.com/javascript/latest/sample-code/layers-vectortilelayer/index.html"
-                            target="_blank">Sample: Vector tiles</a></li>
-
-                    <li><a href="https://developers.arcgis.com/javascript/latest/api-reference/esri-layers-FeatureLayer.html"
-                            target="_blank">Class: FeatureLayer</a>
-                        <ul>
-                            <li>Search ArcGIS Online for <a
-                                    href="https://esrieddelivery.maps.arcgis.com/home/search.html?q=type%3A%22feature%20service%22&t=content&restrict=false"
-                                    target="_blank">FeatureLayers</a></li>
-                        </ul>
-                    </li>
-                    <li><a href="https://developers.arcgis.com/javascript/latest/sample-code/layers-featurelayer/index.html"
-                            target="_blank">Sample: Add FeatureLayer to your Map</a></li>
-
-                    <li><a href="https://developers.arcgis.com/javascript/latest/api-reference/esri-layers-MapImageLayer.html"
-                            target="_blank">Class: MapImageLayer</a>
-                    </li>
-                    <li><a href="https://developers.arcgis.com/javascript/latest/sample-code/layers-mapimagelayer/index.html"
-                            target="_blank">Sample: Add a MapImageLayer to your map</a></li>
-                    <!--
-          <li><a href="" target="_blank"></a></li>
-          <li><a href="" target="_blank"></a></li>
--->
-                </ul>
-
-                <h3>Resources</h3>
-                <ul>
-                    <li><a href="https://server.arcgisonline.com/ArcGIS/rest/services" target="_blank">ArcGIS Online
-                            REST enpoint</a> &#151; Access to a collection of tiled and vector-tiled services</li>
-                    <li><a href="https://esrieddelivery.maps.arcgis.com/home/item.html?id=4baab8f7f6764b18a7b0b8f1e7f1e910"
-                            target="_blank">WorldMap_AdminBoundaries FeatureLayer</a></li>
-                    <li>Sample Server 6 > <a
-                            href="https://sampleserver6.arcgisonline.com/arcgis/rest/services/USA/MapServer"
-                            target="_blank">USA MapImageLayer</a></li>
-
-                </ul>
             </div>
-
         </div>
 
         <!-- =============================================== -->
         <!-- ==========  Lesson 4A - Map Views =============
     <!-- =============================================== -->
 
-        <div class="tabpane" id="lesson4a" data-dojo-type="dijit/layout/ContentPane" title="Lesson 4A">
-            <h2>Lesson 4A | Displaying maps with MapViews</h2>
+        <div class="tabpane" id="lesson4" data-dojo-type="dijit/layout/ContentPane" title="Lesson 4">
+            <h2>Lesson 4 | Displaying maps with MapViews</h2>
 
             <div class="panezone">
                 <h3>Starters:</h3>
-                <ul>
-                    <li><a href="https://codepen.io/rpprosser/pen/ameGZp" target="_blank">Stage 1 Starter &#151;
-                            Basic</a> OR
-                        <a href="https://codepen.io/rpprosser/pen/wJPwZg" target="_blank">Stage 1 Starter &#151;
-                            Map</a><br>Center the map over Palm Springs at a scale of 1:50000</li>
-                    <li><a href="https://codepen.io/rpprosser/pen/zZPYaO" target="_blank">Stage 2 Starter &#151;
-                            Map</a><br>Code buttons to recenter and scale the map over Palm Springs, and over each
-                        member's hometown.</li>
-                    <li><a href="https://codepen.io/rpprosser/pen/wJPwZg" target="_blank">Stage 3 Starter &#151;
-                            Map</a><br>Animate the map extent changes</li>
-                </ul>
-
-                <h3>Example Solutions:</h3>
-                <ul>
-                    <li><a href="https://codepen.io/rpprosser/pen/dOmKNj" target="_blank">Stage 1 - MapView Initial
-                            Extent</a></li>
-                    <li><a href="https://codepen.io/rpprosser/pen/qqoKmo" target="_blank">Stage 2 - MapView Change
-                            Extent</a></li>
-                    <li><a href="https://codepen.io/rpprosser/pen/oYqyjq" target="_blank">Stage 3 - MapView Animate
-                            Extent (GoTo)</a></li>
-                </ul>
-
-                <h3>Additional Solutions:</h3>
-                <ul>
-                    <li><a href="https://codepen.io/rpprosser/pen/XMbKLz" target="_blank">Stage 1 - Initial Extent</a>
-                    </li>
-                    <li><a href="https://codepen.io/rpprosser/pen/gmpwYV" target="_blank">Stage 2 - Change view
-                            point</a></li>
-                    <!--
-          <li><a href="" target="_blank">Stage 3 - Animate To</a></li>
-          -->
-                </ul>
             </div>
-
-            <div class="panezone">
-                <h3>Workflow</h3>
-                <ol>
-                    <li>Create the map</li>
-                    <li>Create the view</li>
-                    <li>Assign map to view</li>
-                    <li>Create a view point</li>
-                    <li>Assign view point to view</li>
-                </ol>
-                <h3>References</h3>
-                <ul>
-                    <li><a href="https://developers.arcgis.com/javascript/latest/api-reference/esri-Map.html"
-                            target="_blank">Class: Map</a></li>
-                    <li><a href="https://developers.arcgis.com/javascript/latest/api-reference/esri-views-MapView.html"
-                            target="_blank">Class: MapView</a></li>
-                    <li><a href="https://developers.arcgis.com/javascript/latest/api-reference/esri-Viewpoint.html"
-                            target="_blank">Class: Viewpoint</a></li>
-                    <li><a href="https://developers.arcgis.com/javascript/latest/sample-code/get-started-mapview/index.html"
-                            target="_blank">Sample: Get started with MapView - Create a 2D map</a></li>
-                </ul>
-            </div>
-
-        </div>
-
-        <!-- =============================================== -->
-        <!-- =========  Lesson 4B - Scene Views ============
-    <!-- =============================================== -->
-
-        <div class="tabpane" id="lesson4b" data-dojo-type="dijit/layout/ContentPane" title="Lesson 4B">
-            <h2>Lesson 4B | Displaying maps with SceneViews</h2>
-
-            <div class="panezone">
-                <h3>Starters:</h3>
-                <ul>
-                    <li><a href="https://codepen.io/rpprosser/pen/wJPwZg" target="_blank">Stage 1 Starter &#151; Map</a>
-                        OR
-                        <a href="https://codepen.io/rpprosser/pen/Egrgrq" target="_blank">Stage 1 Starter &#151;
-                            Scene</a><br>Set the scene's initial point. Use a location and initial scale of your own
-                        choosing, for example, Kathmandu, Nepal at 1:64,000.</li>
-                    <li><a href="https://codepen.io/rpprosser/pen/Egrgrq" target="_blank">Stage 2 Starter &#151;
-                            Scene</a><br>Code a button to alter the scene's ViewPoint centering the view on a location
-                        of your choosing, for example the Palace of Versailles. </li>
-                    <li><a href="https://codepen.io/rpprosser/pen/Egrgrq" target="_blank">Stage 3 Starter &#151;
-                            Scene</a><br>Animate the change by coding several buttons. </li>
-                </ul>
-
-                <h3>Example Solutions:</h3>
-                <ul>
-                    <li><a href="https://codepen.io/rpprosser/pen/qqYOPG" target="_blank">Stage 1 - Initial Extent</a>
-                    </li>
-                    <li><a href="https://codepen.io/rpprosser/pen/xRjwWe" target="_blank">Stage 2 - Change view
-                            point</a></li>
-                    <li><a href="https://codepen.io/rpprosser/pen/mOLeQr" target="_blank">Stage 3 - Animate To</a></li>
-                </ul>
-
-                <h3>Additional Solutions:</h3>
-                <ul>
-                    <li><a href="https://codepen.io/rpprosser/pen/EWGxmM" target="_blank">Stage 1 - Basic SceneView</a>
-                    </li>
-                    <li><a href="https://codepen.io/rpprosser/pen/peqoOO" target="_blank">Stage 2 - Alternative
-                            viewpoint in a SceneView</a></li>
-                    <!--
-          <li><a href="" target="_blank">Stage 3 - </a></li>
-          -->
-                </ul>
-            </div>
-
-            <div class="panezone">
-                <h3>Workflow</h3>
-                <ol>
-                    <li>Create the map</li>
-                    <li>Create the view</li>
-                    <li>Assign map to view</li>
-                    <li>Create a view point</li>
-                    <li>Assign view point to view</li>
-                </ol>
-                <h3>References</h3>
-                <ul>
-                    <li><a href="https://developers.arcgis.com/javascript/latest/api-reference/esri-WebScene.html"
-                            target="_blank">Class: WebScene</a></li>
-                    <li><a href="https://developers.arcgis.com/javascript/latest/api-reference/esri-views-SceneView.html"
-                            target="_blank">Class: SceneView</a></li>
-                    <li><a href="https://developers.arcgis.com/javascript/latest/api-reference/esri-Viewpoint.html"
-                            target="_blank">Class: Viewpoint</a></li>
-                    <li><a href="https://developers.arcgis.com/javascript/latest/sample-code/get-started-sceneview/index.html"
-                            target="_blank">Sample: Get started with SceneView - Create a 3D map</a></li>
-                    <li><a href="https://developers.arcgis.com/javascript/latest/sample-code/scene-goto/index.html"
-                            target="_blank">Sample: Using goTo() in a SceneView</a></li>
-                </ul>
-            </div>
-
         </div>
     </div>
 
@@ -503,28 +139,26 @@
     <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js" crossorigin></script>
     <script src="like_button.js"></script>
 
-
     <script data-dojo-config="async: 1" src="//ajax.googleapis.com/ajax/libs/dojo/1.10.4/dojo/dojo.js"></script>
         <script>
-            // Require the Menu and MenuItem class, and the dojo/parser,
-            // and make sure the DOM is ready
-            require([
-                "dijit/Menu",
-                "dijit/MenuItem",
-                "dojo/parser",
-                "dojo/domReady!"
-            ], function (Menu, MenuItem, parser) {
-                parser.parse();
-            });
-
-            fetch("http://fakerestapi.azurewebsites.net/api/Books")
-                .then(function (response) {
-                    return response.json()
-                })
-                .then(function(data){
-                    console.log('☀️🌈🦄 data', data);
-                })
-            </script>
+    // Require the Menu and MenuItem class, and the dojo/parser,
+    // and make sure the DOM is ready
+        require([
+            "dijit/Menu",
+            "dijit/MenuItem",
+            "dojo/parser",
+            "dojo/domReady!"
+        ], function (Menu, MenuItem, parser) {
+            parser.parse();
+        });
+        fetch("http://fakerestapi.azurewebsites.net/api/Books")
+            .then(function (response) {
+                return response.json()
+            })
+            .then(function (data) {
+                console.log('☀️🌈🦄 data', data);
+            })
+    </script>
 
 </body>
 

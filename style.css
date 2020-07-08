@@ -39,3 +39,23 @@ h2{
   border-bottom : 2px solid #778899;
 }
 
+.dgrid {
+  width: 400px;
+  margin: 10px;
+}
+
+.dgrid .dgrid-content .dgrid-cell {
+  height: 24px;
+}
+
+.dgrid-column-set-0 {
+  width: 25%;
+}
+
+.field-type {
+  width: 150px;
+}
+.field-population {
+  width: 200px;
+}
+
