@@ -142,69 +142,16 @@
         <script>
     // Require the Menu and MenuItem class, and the dojo/parser,
     // and make sure the DOM is ready
-        require({
-                packages: [
-                    {
-                        name: 'dgrid',
-                        location: '//cdn.rawgit.com/SitePen/dgrid/v1.1.0'
-                    },
-                    {
-                        name: 'dstore',
-                        location: '//cdn.rawgit.com/SitePen/dstore/v1.1.1'
-                    }
-                ]
-            },[
+        require([
             "dijit/Menu",
             "dijit/MenuItem",
             "dojo/parser",
             "dojo/domReady!",
-            'dgrid/Tree',
-            'dgrid/ColumnSet',
-            'dgrid/OnDemandGrid',
-            'dgrid/extensions/CompoundColumns',
-            'dgrid/test/data/createHierarchicalStore',
-            'dgrid/test/data/hierarchicalCountryData',
             'dojo/on',
             "dojo/store/Memory",
             "dojo/store/Observable"
-        ], function (Menu, MenuItem, parser, ready, Tree, ColumnSet, OnDemandGrid, CompoundColumns, createHierarchicalStore, data, on, Memory, Observable) {
+        ], function (Menu, MenuItem, parser, ready, on, Memory, Observable) {
             parser.parse();
-
-            var CompoundTree = OnDemandGrid.createSubclass([Tree, CompoundColumns, ColumnSet]);
-            var store = createHierarchicalStore({ data: data });
-
-            var columnSets = [
-                [
-                    [
-                        {
-                            field: 'name',
-                            label: 'Name',
-                            renderExpando: true
-                        }
-                    ]
-                ],
-                [
-                    [
-                        {
-                            label: 'Information',
-                            children: [
-                                {
-                                    field: 'type',
-                                    label: 'Type'
-                                }, {
-                                    field: 'population',
-                                    label: 'Population'
-                                }
-                            ]
-                        }
-                    ]
-                ]
-            ];
-
-            var grid = new CompoundTree({
-                columnSets: columnSets,
-                collection: store.getRootCollection()
-            }, 'grid');
 
 // dojo/store
             var employees = [{
