@@ -26,13 +26,12 @@
             <h2>Welcome to our bookstore!</h2>
 
             <div class="panezone">
-                <div id="like_button_container"></div>
                 <div id="grid"></div>
                 <h3>Lessons</h3>
             </div>
 
             <div class="panezone">
-
+              <div id="like_button_container"></div>
             </div>
 
         </div>
@@ -137,7 +136,8 @@
     <!-- Note: when deploying, replace "development.js" with "production.min.js". -->
     <script src="https://unpkg.com/react@16/umd/react.development.js" crossorigin></script>
     <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js" crossorigin></script>
-
+    <script src="https://unpkg.com/react-redux@7.2.0/dist/react-redux.js" crossorigin></script>
+    <script src="https://unpkg.com/@reduxjs/toolkit@1.4.0/dist/redux-toolkit.umd.js" crossorigin></script>
     <script data-dojo-config="async: 1" src="//ajax.googleapis.com/ajax/libs/dojo/1.10.4/dojo/dojo.js"></script>
         <script>
     // Require the Menu and MenuItem class, and the dojo/parser,
@@ -167,7 +167,7 @@
             'dojo/on',
             "dojo/store/Memory",
             "dojo/store/Observable"
-        ], function (Menu, MenuItem, parser, ready, Tree, ColumnSet, OnDemandGrid, CompoundColumns, createHierarchicalStore, data, on) {
+        ], function (Menu, MenuItem, parser, ready, Tree, ColumnSet, OnDemandGrid, CompoundColumns, createHierarchicalStore, data, on, Memory, Observable) {
             parser.parse();
 
             var CompoundTree = OnDemandGrid.createSubclass([Tree, CompoundColumns, ColumnSet]);
@@ -206,55 +206,205 @@
                 collection: store.getRootCollection()
             }, 'grid');
 
+// dojo/store
+            var employees = [{
+              name: "Krishna",
+              topic: "Sales"
+            }, {
+              name: "Mohhamad",
+              topic: "Sales"
+            }, {
+              name: "Sanaulla",
+              topic: "Marketing"
+            }, {
+              name: "Raja",
+              topic: "Marketing"
+            }];
 
-            /**
+            //Creating object store from the array
+            var employeeStore = new Observable(new Memory({
+              data: employees,
+              idProperty: "name"
+            }));
+
+            /*         console.log('dojo store', employeeStore) */
+
+            //Adding new data to the object store directly
+            employeeStore.add({
+              name: "Manisha",
+              topic: "Advertising"
+            });
+
+            //Query the object store to retrieve data
+            var marketingTeam = employeeStore.query({
+              topic: "Marketing"
+            })
+
+            marketingTeam.observe(function (a, b, c) {
+              console.log("called from observer", a, b, c)
+            });
+
+            //Retrieving from object store as object
+            obj = employeeStore.get("Krishna");
+            // alert(obj.topic);
+
+            //Pu object to store
+            obj.topic = "Marketing";
+            employeeStore.put(obj);
+
+
+/**
 * React
 */
+            var _slicedToArray = function () { function sliceIterator(arr, i) { var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"]) _i["return"](); } finally { if (_d) throw _e; } } return _arr; } return function (arr, i) { if (Array.isArray(arr)) { return arr; } else if (Symbol.iterator in Object(arr)) { return sliceIterator(arr, i); } else { throw new TypeError("Invalid attempt to destructure non-iterable instance"); } }; }();
 
-            var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-            function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-            function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-            function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-            var LikeButton = function (_React$Component) {
-              _inherits(LikeButton, _React$Component);
-
-              function LikeButton(props) {
-                _classCallCheck(this, LikeButton);
-
-                var _this = _possibleConstructorReturn(this, (LikeButton.__proto__ || Object.getPrototypeOf(LikeButton)).call(this, props));
-
-                _this.state = { liked: false };
-                console.log('☀️🌈🦄 ', _this.props.data);
-                return _this;
+            var counterSlice = RTK.createSlice({
+              name: 'counter',
+              initialState: {
+                value: 0
+              },
+              reducers: {
+                increment: function increment(state) {
+                  // Redux Toolkit allows us to write "mutating" logic in reducers. It
+                  // doesn't actually mutate the state because it uses the Immer library,
+                  // which detects changes to a "draft state" and produces a brand new
+                  // immutable state based off those changes
+                  state.value += 1;
+                },
+                decrement: function decrement(state) {
+                  state.value -= 1;
+                },
+                incrementByAmount: function incrementByAmount(state, action) {
+                  state.value += action.payload;
+                }
               }
+            });
 
-              _createClass(LikeButton, [{
-                key: 'render',
-                value: function render() {
-                  var _this2 = this;
+            var _counterSlice$actions = counterSlice.actions,
+              increment = _counterSlice$actions.increment,
+              decrement = _counterSlice$actions.decrement,
+              incrementByAmount = _counterSlice$actions.incrementByAmount;
 
-                  return React.createElement(
+            // The function below is called a thunk and allows us to perform async logic. It
+            // can be dispatched like a regular action: `dispatch(incrementAsync(10))`. This
+            // will call the thunk with the `dispatch` function as the first argument. Async
+            // code can then be executed and other actions can be dispatched
+
+            var incrementAsync = function incrementAsync(amount) {
+              return function (dispatch) {
+                setTimeout(function () {
+                  dispatch(incrementByAmount(amount));
+                }, 1000);
+              };
+            };
+
+            // The function below is called a selector and allows us to select a value from
+            // the state. Selectors can also be defined inline where they're used instead of
+            // in the slice file. For example: `useSelector((state) => state.counter.value)`
+            var selectCount = function selectCount(state) {
+              return state.counter.value;
+            };
+
+            var counterReducer = counterSlice.reducer;
+
+            var store = RTK.configureStore({
+              reducer: {
+                counter: counterReducer
+              }
+            });
+
+            function Counter() {
+              var count = ReactRedux.useSelector(selectCount);
+              var dispatch = ReactRedux.useDispatch();
+
+              var _React$useState = React.useState('2'),
+                _React$useState2 = _slicedToArray(_React$useState, 2),
+                incrementAmount = _React$useState2[0],
+                setIncrementAmount = _React$useState2[1];
+
+              return React.createElement(
+                'div',
+                null,
+                React.createElement(
+                  'div',
+                  { className: "row" },
+                  React.createElement(
                     'button',
                     {
+                      className: 'button',
+                      'aria-label': 'Increment value',
                       onClick: function onClick() {
-                        return _this2.setState({ liked: !_this2.state.liked });
+                        return dispatch(increment());
                       }
                     },
-                    this.state.liked ? "Liked" : "Like"
-                  );
-                }
-              }]);
-
-              return LikeButton;
-            }(React.Component);
+                    '+'
+                  ),
+                  React.createElement(
+                    'span',
+                    { className: 'value' },
+                    count
+                  ),
+                  React.createElement(
+                    'button',
+                    {
+                      className: 'button',
+                      'aria-label': 'Decrement value',
+                      onClick: function onClick() {
+                        return dispatch(decrement());
+                      }
+                    },
+                    '-'
+                  )
+                ),
+                React.createElement(
+                  'div',
+                  { className: 'row' },
+                  React.createElement('input', {
+                    className: 'textbox',
+                    'aria-label': 'Set increment amount',
+                    value: incrementAmount,
+                    onChange: function onChange(e) {
+                      return setIncrementAmount(e.target.value);
+                    }
+                  }),
+                  React.createElement(
+                    'button',
+                    {
+                      className: 'button',
+                      onClick: function onClick() {
+                        return dispatch(incrementByAmount(Number(incrementAmount) || 0));
+                      }
+                    },
+                    'Add Amount'
+                  ),
+                  React.createElement(
+                    'button',
+                    {
+                      className: 'asyncButton',
+                      onClick: function onClick() {
+                        return dispatch(incrementAsync(Number(incrementAmount) || 0));
+                      }
+                    },
+                    'Add Async'
+                  )
+                )
+              );
+            }
 
             var domContainer = document.querySelector('#like_button_container');
-            ReactDOM.render(React.createElement(LikeButton, { data: data }), domContainer);
-        });
+            ReactDOM.render(React.createElement(
+              React.StrictMode,
+              null,
+              React.createElement(
+                ReactRedux.Provider,
+                { store: store },
+                React.createElement(Counter, null)
+              )
+            ), domContainer);
+        
+        
+          // AMD closing bracket
+          });
 
 
         // fetch("http://fakerestapi.azurewebsites.net/api/Books")
