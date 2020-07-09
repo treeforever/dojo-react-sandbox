@@ -143,21 +143,80 @@
         <script>
     // Require the Menu and MenuItem class, and the dojo/parser,
     // and make sure the DOM is ready
-        require([
+        require({
+                packages: [
+                    {
+                        name: 'dgrid',
+                        location: '//cdn.rawgit.com/SitePen/dgrid/v1.1.0'
+                    },
+                    {
+                        name: 'dstore',
+                        location: '//cdn.rawgit.com/SitePen/dstore/v1.1.1'
+                    }
+                ]
+            },[
             "dijit/Menu",
             "dijit/MenuItem",
             "dojo/parser",
-            "dojo/domReady!"
-        ], function (Menu, MenuItem, parser) {
+            "dojo/domReady!",
+            'dgrid/Tree',
+            'dgrid/ColumnSet',
+            'dgrid/OnDemandGrid',
+            'dgrid/extensions/CompoundColumns',
+            'dgrid/test/data/createHierarchicalStore',
+            'dgrid/test/data/hierarchicalCountryData',
+            'dojo/on',
+            "dojo/store/Memory",
+            "dojo/store/Observable"
+        ], function (Menu, MenuItem, parser, ready, Tree, ColumnSet, OnDemandGrid, CompoundColumns, createHierarchicalStore, data, on) {
             parser.parse();
+
+            var CompoundTree = OnDemandGrid.createSubclass([Tree, CompoundColumns, ColumnSet]);
+                console.log('data', data)
+                var store = createHierarchicalStore({ data: data });
+
+                var columnSets = [
+                    [
+                        [
+                            {
+                                field: 'name',
+                                label: 'Name',
+                                renderExpando: true
+                            }
+                        ]
+                    ],
+                    [
+                        [
+                            {
+                                label: 'Information',
+                                children: [
+                                    {
+                                        field: 'type',
+                                        label: 'Type'
+                                    }, {
+                                        field: 'population',
+                                        label: 'Population'
+                                    }
+                                ]
+                            }
+                        ]
+                    ]
+                ];
+
+                var grid = new CompoundTree({
+                    columnSets: columnSets,
+                    collection: store.getRootCollection()
+                }, 'grid');
         });
-        fetch("http://fakerestapi.azurewebsites.net/api/Books")
-            .then(function (response) {
-                return response.json()
-            })
-            .then(function (data) {
-                console.log('☀️🌈🦄 data', data);
-            })
+
+
+        // fetch("http://fakerestapi.azurewebsites.net/api/Books")
+        //     .then(function (response) {
+        //         return response.json()
+        //     })
+        //     .then(function (data) {
+        //         console.log('☀️🌈🦄 data', data);
+        //     })
     </script>
 
 </body>
