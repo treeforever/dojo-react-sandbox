@@ -19,9 +19,10 @@
 <body class="flat">
     <div id="lessontabs" data-dojo-type="dijit/layout/TabContainer" tabStrip="true">
         <div id="home" class="tabpane" data-dojo-type="dijit/layout/ContentPane" title="Home" selected="true">
-            <h2> Dojo - React</h2>
+            <h2 class="center"> Dojo - React</h2>
             <div class="panezone">
-              <span data-dojo-type="FancyCounter"></span>
+              <div class="center"><span data-dojo-type="FancyCounter"></span></div>
+              
             </div>
             <div class="panezone">
               <div id="like_button_container"></div>
@@ -123,6 +124,12 @@
                 },
                 incrementByAmount: function incrementByAmount(state, action) {
                   state.value += action.payload;
+
+                                    // update dojo store
+                  counterStore.put({
+                    value: state.value,
+                    topic: "counter"
+                  })
                 }
               }
             });
@@ -259,9 +266,9 @@
               value: store.getState().counter.value,
 
               templateString: "<div>" +
-                "<button data-dojo-attach-event='onclick: increment'>+</button>" +
-                "&nbsp; <span data-dojo-attach-point='counter' id='dojoCounter'>${value}</span>" +
-                "&nbsp; <button data-dojo-attach-event='onclick: decrement'>-</button>" +
+                "<button class='button' data-dojo-attach-event='onclick: increment'>+</button>" +
+                "&nbsp; <span data-dojo-attach-point='counter' class='value' id='dojoCounter'>${value}</span>" +
+                "&nbsp; <button class='button' data-dojo-attach-event='onclick: decrement'>-</button>" +
                 "</div>",              
 
               increment: function () {

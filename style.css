@@ -134,4 +134,9 @@ h2{
   transition: 0s
 }
 
+.center {
+  display: flex;
+  justify-content: center;
+}
+
 
