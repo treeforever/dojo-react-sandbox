@@ -21,7 +21,7 @@
         <div id="home" class="tabpane" data-dojo-type="dijit/layout/ContentPane" title="Home" selected="true">
             <h2> Dojo - React</h2>
             <div class="panezone">
-              <span data-dojo-type="FancyCounter">press me</span>
+              <span data-dojo-type="FancyCounter"></span>
             </div>
             <div class="panezone">
               <div id="like_button_container"></div>
@@ -60,74 +60,9 @@
             "dijit/_WidgetBase", 
             "dijit/_TemplatedMixin"
         ], function (Menu, MenuItem, parser, ready, on, Memory, Observable, declare, _WidgetBase, _TemplatedMixin) {
-               declare("FancyCounter", [_WidgetBase, _TemplatedMixin], {
-              // counter
-              _i: 0,
-
-              templateString: "<div>" +
-                "<button data-dojo-attach-event='onclick: increment'>press me</button>" +
-                "&nbsp; count: <span data-dojo-attach-point='counter'>0</span>" +
-                "</div>",
-
-              increment: function () {
-                this.counter.innerHTML = ++this._i;
-              }
-            });
-
-            ready(function () {
-              // Call the parser manually so it runs after our widget is defined, and page has finished loading
-            parser.parse();
-
-// dojo/store
-            var employees = [{
-              name: "Krishna",
-              topic: "Sales"
-            }, {
-              name: "Mohhamad",
-              topic: "Sales"
-            }, {
-              name: "Sanaulla",
-              topic: "Marketing"
-            }, {
-              name: "Raja",
-              topic: "Marketing"
-            }];
-
-            //Creating object store from the array
-            var employeeStore = new Observable(new Memory({
-              data: employees,
-              idProperty: "name"
-            }));
-
-            /*         console.log('dojo store', employeeStore) */
-
-            //Adding new data to the object store directly
-            employeeStore.add({
-              name: "Manisha",
-              topic: "Advertising"
-            });
-
-            //Query the object store to retrieve data
-            var marketingTeam = employeeStore.query({
-              topic: "Marketing"
-            })
-
-            marketingTeam.observe(function (a, b, c) {
-              console.log("called from observer", a, b, c)
-            });
-
-            //Retrieving from object store as object
-            obj = employeeStore.get("Krishna");
-            // alert(obj.topic);
-
-            //Pu object to store
-            obj.topic = "Marketing";
-            employeeStore.put(obj);
-
-
-/**
-* React
-*/
+          /**
+  * React
+  */
             var _slicedToArray = function () { function sliceIterator(arr, i) { var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"]) _i["return"](); } finally { if (_d) throw _e; } } return _arr; } return function (arr, i) { if (Array.isArray(arr)) { return arr; } else if (Symbol.iterator in Object(arr)) { return sliceIterator(arr, i); } else { throw new TypeError("Invalid attempt to destructure non-iterable instance"); } }; }();
 
             var counterSlice = RTK.createSlice({
@@ -273,23 +208,84 @@
                 React.createElement(Counter, null)
               )
             ), domContainer);
-        
-        
+          console.log('store', store.getState().counter.value)
+            /** 
+             * dojo/store
+             */
+            var employees = [{
+              name: "Krishna",
+              topic: "Sales"
+            }, {
+              name: "Mohhamad",
+              topic: "Sales"
+            }, {
+              name: "Sanaulla",
+              topic: "Marketing"
+            }, {
+              name: "Raja",
+              topic: "Marketing"
+            }];
+
+            //Creating object store from the array
+            var employeeStore = new Observable(new Memory({
+              data: employees,
+              idProperty: "name"
+            }));
+
+            /*         console.log('dojo store', employeeStore) */
+
+            //Adding new data to the object store directly
+            employeeStore.add({
+              name: "Manisha",
+              topic: "Advertising"
+            });
+
+            //Query the object store to retrieve data
+            var marketingTeam = employeeStore.query({
+              topic: "Marketing"
+            })
+
+            marketingTeam.observe(function (a, b, c) {
+              console.log("called from observer", a, b, c)
+            });
+
+            //Retrieving from object store as object
+            obj = employeeStore.get("Krishna");
+            // alert(obj.topic);
+
+            //Pu object to store
+            obj.topic = "Marketing";
+            employeeStore.put(obj);
+            /**
+             * dojo widget 
+             */ 
+              declare("FancyCounter", [_WidgetBase, _TemplatedMixin], {
+              // counter
+              _i: (() => store.getState().counter.value)(),
+
+              templateString: "<div>" +
+                "<button data-dojo-attach-event='onclick: increment'>+</button>" +
+                "&nbsp; <span data-dojo-attach-point='counter'>${_i}</span>" +
+                "&nbsp; <button data-dojo-attach-event='onclick: decrement'>-</button>" +
+                "</div>",
+
+              increment: function () {
+                this.counter.innerHTML = ++this._i;
+                store.dispatch(increment());
+              },
+
+              decrement: function() {
+                this.counter.innerHTML = --this._i;
+                store.dispatch(decrement());
+              },
+            });
+
+          ready(function () {
+              // Call the parser manually so it runs after our widget is defined, and page has finished loading
+            parser.parse();        
           // AMD closing bracket
           });
         });
-
-
-        // fetch("http://fakerestapi.azurewebsites.net/api/Books")
-        //     .then(function (response) {
-        //         return response.json()
-        //     })
-        //     .then(function (data) {
-        //         console.log('☀️🌈🦄 data', data);
-        //     })
-
-
-
     </script>
 
 
