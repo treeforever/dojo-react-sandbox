@@ -48,6 +48,7 @@
         <script>
     // Require the Menu and MenuItem class, and the dojo/parser,
     // and make sure the DOM is ready
+    let counterStore;
         require([
             "dijit/Menu",
             "dijit/MenuItem",
@@ -58,8 +59,37 @@
             "dojo/store/Observable",
             "dojo/_base/declare",
             "dijit/_WidgetBase", 
-            "dijit/_TemplatedMixin"
-        ], function (Menu, MenuItem, parser, ready, on, Memory, Observable, declare, _WidgetBase, _TemplatedMixin) {
+            "dijit/_TemplatedMixin",
+            "dijit/registry",
+            "dojo/dom",
+            "dojo/domReady!"
+        ], function (Menu, MenuItem, parser, ready, on, Memory, Observable, declare, _WidgetBase, _TemplatedMixin, registry, dom) {
+          var initialCounterValue = 0;
+           /** 
+              * dojo/store
+              */
+            var counter = [{
+              value: initialCounterValue,
+              topic: "counter"
+            }];
+
+            //Creating object store from the array
+            counterStore = new Observable(new Memory({
+              data: counter,
+            }));
+
+            //Query the object store to retrieve data
+            var counterQuery = counterStore.query({
+              topic: "counter"
+            })
+            
+            counterQuery.observe(function (a, b, c) {
+              var dojoCounter = dom.byId("dojoCounter");
+
+              dojoCounter.innerHTML = a.value;
+              console.log("called from observer", a, b, c)
+            });
+          
           /**
   * React
   */
@@ -68,18 +98,28 @@
             var counterSlice = RTK.createSlice({
               name: 'counter',
               initialState: {
-                value: 0
+                value: initialCounterValue
               },
               reducers: {
                 increment: function increment(state) {
-                  // Redux Toolkit allows us to write "mutating" logic in reducers. It
-                  // doesn't actually mutate the state because it uses the Immer library,
-                  // which detects changes to a "draft state" and produces a brand new
-                  // immutable state based off those changes
                   state.value += 1;
+
+                  
+                  // update dojo store
+                  counterStore.put({
+                    value: state.value,
+                    topic: "counter"
+                  })
+
                 },
                 decrement: function decrement(state) {
                   state.value -= 1;
+                  
+                  // update dojo store
+                  counterStore.put({
+                    value: state.value,
+                    topic: "counter"
+                  })
                 },
                 incrementByAmount: function incrementByAmount(state, action) {
                   state.value += action.payload;
@@ -208,74 +248,29 @@
                 React.createElement(Counter, null)
               )
             ), domContainer);
-          console.log('store', store.getState().counter.value)
-            /** 
-             * dojo/store
-             */
-            var employees = [{
-              name: "Krishna",
-              topic: "Sales"
-            }, {
-              name: "Mohhamad",
-              topic: "Sales"
-            }, {
-              name: "Sanaulla",
-              topic: "Marketing"
-            }, {
-              name: "Raja",
-              topic: "Marketing"
-            }];
 
-            //Creating object store from the array
-            var employeeStore = new Observable(new Memory({
-              data: employees,
-              idProperty: "name"
-            }));
-
-            /*         console.log('dojo store', employeeStore) */
-
-            //Adding new data to the object store directly
-            employeeStore.add({
-              name: "Manisha",
-              topic: "Advertising"
-            });
-
-            //Query the object store to retrieve data
-            var marketingTeam = employeeStore.query({
-              topic: "Marketing"
-            })
-
-            marketingTeam.observe(function (a, b, c) {
-              console.log("called from observer", a, b, c)
-            });
-
-            //Retrieving from object store as object
-            obj = employeeStore.get("Krishna");
-            // alert(obj.topic);
-
-            //Pu object to store
-            obj.topic = "Marketing";
-            employeeStore.put(obj);
+          // console.log('store', store.getState().counter.value)
+           
             /**
              * dojo widget 
              */ 
               declare("FancyCounter", [_WidgetBase, _TemplatedMixin], {
               // counter
-              _i: (() => store.getState().counter.value)(),
+              value: store.getState().counter.value,
 
               templateString: "<div>" +
                 "<button data-dojo-attach-event='onclick: increment'>+</button>" +
-                "&nbsp; <span data-dojo-attach-point='counter'>${_i}</span>" +
+                "&nbsp; <span data-dojo-attach-point='counter' id='dojoCounter'>${value}</span>" +
                 "&nbsp; <button data-dojo-attach-event='onclick: decrement'>-</button>" +
-                "</div>",
+                "</div>",              
 
               increment: function () {
-                this.counter.innerHTML = ++this._i;
+                this.counter.innerHTML = ++this.value;
                 store.dispatch(increment());
               },
 
               decrement: function() {
-                this.counter.innerHTML = --this._i;
+                this.counter.innerHTML = --this.value;
                 store.dispatch(decrement());
               },
             });
